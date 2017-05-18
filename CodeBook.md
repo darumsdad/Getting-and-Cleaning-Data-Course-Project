@@ -8,3 +8,7 @@ This document describes the code contained in run_analysis.R.
 5. Read the Activity Number and append that to the data set
 6. Read the Subject Number and append that to the data set
 7. Merge this data with the activity_labels.txt file data to get the string representation of the Activity Number
+
+There is also a file named tidy_mean.csv that can be read into R with the following command.
+
+f <- read.table(file = "tidy_mean.csv", sep = ",")
