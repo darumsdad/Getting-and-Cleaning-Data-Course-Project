@@ -9,3 +9,7 @@
  * Add the Activity description and the Subject number
  
  The CodeBook.md explains it more detailed.
+
+ There is also a file named tidy_mean.csv that can be read into R with the following command.
+ 
+ f <- read.table(file = "tidy_mean.csv", sep = ",")
