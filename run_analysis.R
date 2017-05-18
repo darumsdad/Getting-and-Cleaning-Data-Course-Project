@@ -20,7 +20,7 @@ y2 <- read.table(file = file.path("train","y_train.txt"),sep = "",header = F,as.
 y <- rbind(y1,y2)
 
 
-# add the activity number column
+# add the subject number column
 s1 <- read.table(file = file.path("test","subject_test.txt"),sep = "",header = F,as.is = T, col.names = "Subject")
 s2 <- read.table(file = file.path("train","subject_train.txt"),sep = "",header = F,as.is = T, col.names = "Subject") 
 s <- rbind(s1,s2)
