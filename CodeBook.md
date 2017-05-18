@@ -1,6 +1,12 @@
 
 This document describes the code contained in run_analysis.R.
 
+The script requires these 2 package 
+library(dplyr)
+library(reshape2)
+
+The logic is as follows : 
+
 1. Read in the column names from the file (from the "features.txt" file)
 2. We need to only read a subset of columns from the data file. To accomplish this I prepapre a vector of classNames that will be applied to the read. If the className is NULL then read.table function will skip that column. If the column is one that we want to read (mean or std)  I set the entry in the vecor to "double" if not its NULL
 3. Read the data files applying the className vector above
