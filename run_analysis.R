@@ -1,4 +1,5 @@
 library(dplyr)
+library(reshape2)
 
 #read in the column names from the file
 col_label  <- read.table(file = "features.txt", header = F, as.is = T, col.names = c("ID", "Name"))
@@ -35,3 +36,5 @@ lookup <- read.table(file = "activity_labels.txt", header = F, as.is = T, col.na
 data <- merge(x,lookup) %>% select(-(ActivityNumber))
 
 mean_by_s_and_a <- dcast(melt(data , id.vars = c("Subject","ActivityName")),Subject + ActivityName ~ variable, mean)
+
+write.table(mean_by_s_and_a,  row.name = F)
