@@ -1,3 +1,5 @@
+library(dplyr)
+
 #read in the column names from the file
 col_label  <- read.table(file = "features.txt", header = F, as.is = T, col.names = c("ID", "Name"))
 
@@ -20,7 +22,7 @@ y2 <- read.table(file = file.path("train","y_train.txt"),sep = "",header = F,as.
 y <- rbind(y1,y2)
 
 
-# add the subject number column
+# add the activity number column
 s1 <- read.table(file = file.path("test","subject_test.txt"),sep = "",header = F,as.is = T, col.names = "Subject")
 s2 <- read.table(file = file.path("train","subject_train.txt"),sep = "",header = F,as.is = T, col.names = "Subject") 
 s <- rbind(s1,s2)
@@ -30,4 +32,6 @@ x <- cbind(x,y,s)
 
 lookup <- read.table(file = "activity_labels.txt", header = F, as.is = T, col.names = c("ActivityNumber","ActivityName"))
 
-data <- merge(x,lookup)
+data <- merge(x,lookup) %>% select(-(ActivityNumber))
+
+mean_by_s_and_a <- dcast(melt(data , id.vars = c("Subject","ActivityName")),Subject + ActivityName ~ variable, mean)
